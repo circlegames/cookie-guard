@@ -9,7 +9,7 @@ function expectBrowserCookies(s: string) {
 
 describe('cookie guard', () => {
     const original = cloneDocumentCookie();
-    cookieGuard.init({ defaultBlocked: true, preserveBlocked: false });
+    cookieGuard.init({ defaultBlocked: true });
 
     it('block unblock', () => {
         cookieGuard.blockEnabled = true;

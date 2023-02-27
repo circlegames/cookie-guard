@@ -7,6 +7,8 @@ class CookieGuard {
     private _buffer: { [key: string]: Cookie & { raw: string } } = {};
     private _blockEnabled: boolean;
 
+    public defaultCookieExpirationMs = 365 * 86400 * 1000;
+
     init({ defaultBlocked }: { defaultBlocked: boolean }) {
         this._original = cloneDocumentCookie();
         this._blockEnabled = defaultBlocked;
@@ -69,7 +71,11 @@ class CookieGuard {
 
     private moveBrowserToBuffer() {
         for (const [name, value] of decodeBrowserCookies(this._original.get())) {
-            this._buffer[name] = { name: name, value: value, raw: `${name}=${value}` };
+            this._buffer[name] = {
+                name: name,
+                value: value,
+                raw: `${name}=${value};expires=${this.defaultCookieExpires()}`,
+            };
             this._original.set(`${name}=;expires=Thu, 01 Jan 1970 00:00:01 GMT`);
         }
     }
@@ -79,6 +85,11 @@ class CookieGuard {
             this._original.set(c.raw);
         }
         this._buffer = {};
+    }
+
+    private defaultCookieExpires(): string {
+        const ms = new Date().getTime() + this.defaultCookieExpirationMs;
+        return new Date(ms).toUTCString();
     }
 }
 
