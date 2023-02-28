@@ -36,7 +36,7 @@ class CookieGuard {
                 // encode to string
                 return Object.entries(result)
                     .map(([name, value]) => `${name}=${value}`)
-                    .join(';');
+                    .join('; ');
             },
 
             set: (v: string) => {
@@ -74,9 +74,9 @@ class CookieGuard {
             this._buffer[name] = {
                 name: name,
                 value: value,
-                raw: `${name}=${value};expires=${this.defaultCookieExpires()}`,
+                raw: `${name}=${value}; expires=${this.defaultCookieExpires()}`,
             };
-            this._original.set(`${name}=;expires=Thu, 01 Jan 1970 00:00:01 GMT`);
+            this._original.set(`${name}=; expires=Thu, 01 Jan 1970 00:00:01 GMT`);
         }
     }
 

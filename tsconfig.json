@@ -2,10 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "lib": [
-      "esnext",
-      "dom"
-    ],
+    "lib": ["esnext", "dom"],
     "baseUrl": ".",
     "rootDir": "src",
     "outDir": "dist",
@@ -24,10 +21,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "node_modules/**/*"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules/**/*"]
 }
