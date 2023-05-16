@@ -10,8 +10,13 @@ If the user doesn't grant permission, Cookie-Guard smartly stores the cookie val
 interactions, your code will behave as if it's interacting with a real cookie, while the data is securely stored in
 memory, ensuring GDPR compliance.
 
-That means, that you can use all your JavaScript libraries for analytics and ads as usual, without them knowing that
-access to cookies was blocked. The only difference is that cookie data will not persist between page reopens.
+That means, that you can
+
+- use all your JavaScript libraries for analytics and ads as usual, without them knowing that
+  access to cookies was blocked. The only difference is that cookie data will not persist between page reopens.
+- use all you JavaScript libraries right away after page load, before user gave any permission, and as soon as user has
+  given permissions, all cookies from memory storage would flush to browser cookies and will persist between page
+  reopens.
 
 ## Installation
 
@@ -55,7 +60,6 @@ cookieGuard.setBlocked('analytics', false);
 cookieGuard.setBlocked('ads', false);
 
 ```
-
 
 ## Disclaimer
 
